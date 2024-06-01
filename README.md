@@ -21,9 +21,9 @@ top
 ```
 top -b -n 1
 ```
+[실행예시]
  ![alt text](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Frxlg4%2FbtqYfV2LE3L%2FSW5SbyO65ZUa5PggM3KI8K%2Fimg.png)
 [설명]
-
 * 1:15 : 1시간 15분 전에 서버가 구동
 * load average : 현재 시스템이 얼마나 일을 하는지를 나타냄. 3개의 숫자는 1분, 5분, 15분 간의 평균 실행/대기 중인 프로세스의 수. CPU 코어수 보다 적으면 문제 없음
 * Tasks : 프로세스 개수
@@ -52,8 +52,12 @@ ps
 * -o : 사용자 정의 형식 지정 가능
 * f : 프로세스 계층을 텍스트 형식의 트리구조를 보여줌.
 * -f : 전체 포맷으로 출력
+
+[실행예시]
  ![alt text](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJzNka%2FbtsCOy6jjjO%2FcsjX2vyKt6dUuImIcXijxk%2Fimg.png)
+
 [설명]
+
 * F:	프로세스 플래그
 * S:	프로세스 상태코드
 * UID:	프로세스 소유자이름
@@ -102,7 +106,9 @@ jobs [OPTIONS] [JOB]
 [실행예시]
 
 ![alt text](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FKWXTd%2FbtrcLAQP0GL%2F9PU2e4Y0lFeBB1nh4rIJQ0%2Fimg.png)
-* Running: 작업이 계속 진행중임
+
+[설명]
+* Running: 작업이 계속 진행중
 * Done: 작업이 완료되어 0을 반환
 * Done(code): 작업이 종료되었으며 0이 아닌 코드를 반환
 * Stopped: 작업이 일시 중단
@@ -113,12 +119,12 @@ jobs [OPTIONS] [JOB]
 
 kill
 -
-**프로세스를 종료하거나 그외에도 다른 신호를 보내어 프로세스의 동장을 제어할 수 있다.**
+**프로세스를 종료하거나 그외에도 다른 신호를 보내어 프로세스의 동작을 제어할 수 있다.**
 기본형식은 다음과 같다.
 ```
 kill [옵션] <PID>
 ```
-여기서 <PID>는 종료할 프로세스의 식별자인 프로세스 ID를 나타낸다.
+여기서 PID는 종료할 프로세스의 식별자인 프로세스 ID를 나타낸다.
 
 * -s <signal>: 특정 시그널(signal)을 사용하여 프로세스를 종료. 기본적으로 SIGTERM 시그널이 사용.
 * -l, --list: 지원되는 시그널(signal) 목록을 출력.
@@ -126,4 +132,15 @@ kill [옵션] <PID>
 * -q, --queue: 프로세스에 시그널을 보내는 대신 시그널을 대기열에 추가.
 * -9 <PID>: SIGKILL 시그널을 사용하여 강제로 프로세스를 종료. 이는 프로세스를 멈추는 가장 강력한 방법이지만, 데이터 손실이 발생할 수 있다.
 
-종료하는 것 외에도 다른 동작을 수행할 수 있다. 예시는 다음과 같다.
+신호(Signal)의 대한 설명은 다음과 같다.
+
+번호|신호(Signal) 이름|신호(Signal)|의미
+---|---|---|---
+1|SIGHUP|HUP|hangup, 로그아웃등의 접속이 끊을 때 발생하는 신호(Signal)로 특정 실행 중인 프로그램이 사용하는 설정 파일을 변경시키고 변화된 내용을 적용할때 사용
+2|SIGINT|INT|현재 작동중인 프로그램의 동작을 멈출때 사용되며, 일반적인 값은 <CTRL>+<c>
+3|SIGKILL|KILL|프로그램을 무조건 종료할 경우 사용
+4|SIGSEGV|SEGV|잘못된 메모리 관리시 생기는 신호(Signal)
+5|SIGTERM|TERM|실행중인 프로그램을 정상적인 종료방법으로 프로그램을 종료하는 신호(Signal)로 kill 명령에서 신호(Signal)를 지정하지 않으면 이 신호(Signal)를 사용하여 프로그램을 종료
+6|SIGCONT|CONT|중지 되어 있는 프로그램을 재실행 하는데 사용되는 신호(Signal)
+7|SIGSTOP|STOP|프로그램을 중지 하는데 사용되는 신호(Signal)
+8|SIGTSTP|TSTP|터미널에서 중지되어 있는 신호(Signal)
