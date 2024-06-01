@@ -92,3 +92,21 @@ jobs
 ```
 jobs [OPTIONS] [JOB]
 ```
+* -l: 프로세스 ID와 함께 잡 목록을 출력
+* -n: 마지막로 알림 이후 변경된 잡만 출력
+* -p: 잡의 프로세스 ID만 출력
+* -r: 실행 중인 잡만 출력
+* -s: 중지된 잡만 출력
+* -command: 지정한 명령어를 실행
+
+[실행예시]
+
+![alt text](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FKWXTd%2FbtrcLAQP0GL%2F9PU2e4Y0lFeBB1nh4rIJQ0%2Fimg.png)
+* Running: 작업이 계속 진행중임
+* Done: 작업이 완료되어 0을 반환
+* Done(code): 작업이 종료되었으며 0이 아닌 코드를 반환
+* Stopped: 작업이 일시 중단
+* Stopped(SIGTSTP): SIGTSTP 시그널이 작업을 일시 중단
+* Stopped(SIGSTOP): SIGSTOP 시그널이 작업을 일시 중단
+* Stopped(SIGTTIN): SIGTTIN 시그널이 작업을 일시 중단
+* Stopped(SIGTTOU): SIGTTOU 시그널이 작업을 일시 중단
